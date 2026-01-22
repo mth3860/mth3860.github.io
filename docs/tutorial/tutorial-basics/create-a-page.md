@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_label: 페이지 만들기
 ---
 
 # Create a Page
