@@ -1,29 +1,21 @@
-# Vue-Starter Docusaurus 문서 작성 가이드
+# main Docusaurus 문서 작성 가이드
 
 ## 프로젝트 개요
 
 이 프로젝트는 AI플랫폼 개발본부 기술 문서 사이트입니다. 현재 두 개의 독립적인 문서 사이트가 구성되어 있습니다:
 
 - **dsbp-jwt**: DSBP JWT 라이브러리 기술 문서
-- **vue-starter**: Vue Starter 기술 문서
+- **main**: Vue Starter 기술 문서
 
 ## 프로젝트 구조
 
 ```
-dsbp-vue-starter/
-├── dsbp-jwt/              # DSBP JWT 문서
-│   ├── docs/              # 문서 파일들
-│   ├── static/            # 이미지 등 정적 파일
-│   ├── src/               # 커스텀 컴포넌트 및 스타일
-│   ├── docusaurus.config.ts  # 설정 파일
-│   └── sidebars.ts        # 사이드바 구조
-│
-└── vue-starter/           # Vue Starter 문서
-    ├── docs/              # 문서 작성 위치
-    ├── static/            # 이미지 파일 위치
-    ├── src/               # 커스텀 컴포넌트 및 스타일
-    ├── docusaurus.config.ts  # 사이트 설정
-    └── sidebars.ts        # 사이드바 구조 설정
+main/           # Vue Starter 문서
+  ├── docs/              # 문서 작성 위치
+  ├── static/            # 이미지 파일 위치
+  ├── src/               # 커스텀 컴포넌트 및 스타일
+  ├── docusaurus.config.ts  # 사이트 설정
+  └── sidebars.ts        # 사이드바 구조 설정
 ```
 
 ## 시작하기
@@ -31,12 +23,9 @@ dsbp-vue-starter/
 ### 개발 서버 실행
 
 ```bash
-# DSBP JWT 문서
-cd dsbp-jwt
-npm start
+# 최초
+npm install
 
-# Vue Starter 문서
-cd vue-starter
 npm start
 ```
 
@@ -44,10 +33,10 @@ npm start
 
 ### 문서 파일 위치
 
-모든 문서는 `vue-starter/docs/` 디렉토리에 Markdown(`.md`) 형식으로 작성합니다.
+모든 문서는 `main/docs/` 디렉토리에 Markdown(`.md`) 형식으로 작성합니다.
 
 ```
-vue-starter/docs/
+main/docs/
 ├── intro.md                    # 소개 페이지
 ├── tutorial-basics/            # 기본 튜토리얼 폴더
 │   ├── create-a-document.md
@@ -110,10 +99,10 @@ Markdown 문법을 사용하여 문서를 작성합니다:
 
 #### 1. 이미지 파일 저장
 
-이미지는 `vue-starter/static/img/` 디렉토리에 저장합니다:
+이미지는 `main/static/img/` 디렉토리에 저장합니다:
 
 ```
-vue-starter/static/img/
+main/static/img/
 ├── logo.svg
 ├── favicon.ico
 └── my-screenshot.png  # 여기에 이미지 추가
@@ -124,7 +113,7 @@ vue-starter/static/img/
 ```markdown
 <div style={{textAlign: 'center'}}>
     <img 
-        src="/vue-starter/img/img.png"
+        src="/main/img/img.png"
         alt="image"
         style={{ width: '100%', maxWidth: '1000px', borderRadius: '8px' }}
     />
@@ -135,7 +124,7 @@ vue-starter/static/img/
 
 #### 자동 생성 방식 (현재 설정)
 
-`vue-starter/sidebars.ts` 파일에서 자동 생성 방식을 사용하고 있습니다:
+`main/sidebars.ts` 파일에서 자동 생성 방식을 사용하고 있습니다:
 
 ```typescript
 const sidebars: SidebarsConfig = {
@@ -178,7 +167,7 @@ const sidebars: SidebarsConfig = {
 #### _category_.json 파일 위치
 
 ```
-vue-starter/docs/
+main/docs/
 ├── intro.md
 ├── getstarted/
 │   ├── _category_.json        # 이 폴더의 카테고리 설정
@@ -241,7 +230,7 @@ const config: Config = {
   favicon: "img/favicon.ico", // 파비콘
 
   url: "https://your-docusaurus-site.example.com",
-  baseUrl: "/vue-starter/", // 베이스 URL
+  baseUrl: "/main/", // 베이스 URL
 
   i18n: {
     defaultLocale: "en", // 기본 언어 (ko로 변경 가능)
@@ -294,15 +283,15 @@ navbar: {
 ### 1. 새 문서 카테고리 만들기
 
 ```bash
-# vue-starter/docs/ 안에 새 폴더 생성
-mkdir vue-starter/docs/my-category
+# main/docs/ 안에 새 폴더 생성
+mkdir main/docs/my-category
 ```
 
 ### 2. 카테고리 설정
 
 ```bash
-# vue-starter/docs/my-category/_category_.json 생성
-touch vue-starter/docs/my-category/_category_.json
+# main/docs/my-category/_category_.json 생성
+touch main/docs/my-category/_category_.json
 ```
 
 ### 3. 카테고리 작성
@@ -322,7 +311,7 @@ touch vue-starter/docs/my-category/_category_.json
 
 ```bash
 # 새 마크다운 파일 생성
-touch vue-starter/docs/my-category/my-document.md
+touch main/docs/my-category/my-document.md
 ```
 
 ### 5. 문서 작성
@@ -344,7 +333,7 @@ sidebar_label: 내 문서
 실행 중이 아니라면:
 
 ```bash
-cd vue-starter
+cd main
 npm run start
 ```
 
@@ -360,12 +349,12 @@ npm run start
 
 - Kaniko를 사용하여 Docker 이미지 빌드
 - 빌드된 이미지를 프라이빗 레지스트리(`125.133.65.244:5000`)에 푸시
-- 이미지 이름: `dsbp-jwt-vue-starter-docs:latest`
+- 이미지 이름: `dsbp-jwt-main-docs:latest`
 
 #### 2단계: 배포 (deploy)
 
 - SSH를 통해 배포 서버(`125.133.65.245:2222`)에 접속
-- `/home/dsbp-jwt-vue-starter-docs/startup.sh` 스크립트 실행
+- `/home/dsbp-jwt-main-docs/startup.sh` 스크립트 실행
 - 새로운 Docker 이미지로 컨테이너 재시작
 
 #### 3단계: 알림 (notify)
@@ -379,8 +368,8 @@ npm run start
 문서를 작성하거나 수정합니다.
 
 ```bash
-# 예시: vue-starter/docs/intro.md 수정
-vim vue-starter/docs/intro.md
+# 예시: main/docs/intro.md 수정
+vim main/docs/intro.md
 ```
 
 #### 2. Git 커밋 및 푸시
